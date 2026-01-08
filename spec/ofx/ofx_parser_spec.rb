@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::Parser do
   def ofx_example_to(version)
     <<~OFX_CONTENT

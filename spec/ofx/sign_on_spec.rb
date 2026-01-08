@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::SignOn do
   before do
     @ofx = OFX::Parser::Base.new("spec/fixtures/creditcard.ofx")

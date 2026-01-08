@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::Parser::OFX211 do
   before do
     @ofx = OFX::Parser::Base.new("spec/fixtures/v211.ofx")

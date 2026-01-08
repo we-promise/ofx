@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::Status do
   let(:ofx) { OFX::Parser::Base.new(ofx_file) }
   let(:parser) { ofx.parser }

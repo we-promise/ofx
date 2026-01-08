@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::Statement do
   let(:parser) { ofx.parser }
   let(:statement) { parser.statements.first }

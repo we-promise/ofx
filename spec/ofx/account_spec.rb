@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::Account do
   before do
     @ofx = OFX::Parser::Base.new("spec/fixtures/sample.ofx")

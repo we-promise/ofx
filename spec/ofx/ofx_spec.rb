@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX do
   describe "#OFX" do
     it "should yield an OFX instance" do
