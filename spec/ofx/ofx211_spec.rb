@@ -17,11 +17,11 @@ describe OFX::Parser::OFX211 do
   end
 
   it "should set account" do
-    expect(@parser.account).to be_a_kind_of(OFX::Account)
+    expect(@parser.account).to be_a(OFX::Account)
   end
 
   it "should set account" do
-    expect(@parser.sign_on).to be_a_kind_of(OFX::SignOn)
+    expect(@parser.sign_on).to be_a(OFX::SignOn)
   end
 
   it "should set accounts" do
@@ -30,7 +30,7 @@ describe OFX::Parser::OFX211 do
 
   it "should set statements" do
     expect(@parser.statements.size).to eq(2)
-    expect(@parser.statements.first).to be_a_kind_of(OFX::Statement)
+    expect(@parser.statements.first).to be_a(OFX::Statement)
   end
 
   context "transactions" do

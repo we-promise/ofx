@@ -23,7 +23,7 @@ describe OFX::Account do
     end
 
     it "should return transactions" do
-      expect(@account.transactions).to be_a_kind_of(Array)
+      expect(@account.transactions).to be_a(Array)
       expect(@account.transactions.size).to eq(36)
     end
 
