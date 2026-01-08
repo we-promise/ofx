@@ -8,41 +8,41 @@ describe OFX::Statement do
     let(:ofx) { OFX::Parser::Base.new("spec/fixtures/sample.ofx") }
 
     it "returns currency" do
-      statement.currency.should == "BRL"
+      expect(statement.currency).to eq("BRL")
     end
 
     it "returns start date" do
-      statement.start_date.should == Time.parse("2009-10-09 08:00:00 +0000")
+      expect(statement.start_date).to eq(Time.parse("2009-10-09 08:00:00 +0000"))
     end
 
     it "returns end date" do
-      statement.end_date.should == Time.parse("2009-11-03 08:00:00 +0000")
+      expect(statement.end_date).to eq(Time.parse("2009-11-03 08:00:00 +0000"))
     end
 
     it "returns account" do
-      statement.account.should be_a(OFX::Account)
-      statement.account.id.should == '03227113109'
-      statement.account.type.should == :checking
+      expect(statement.account).to be_a(OFX::Account)
+      expect(statement.account.id).to eq('03227113109')
+      expect(statement.account.type).to eq(:checking)
     end
 
     it "returns transactions" do
-      statement.transactions.should be_a(Array)
-      statement.transactions.size.should == 36
+      expect(statement.transactions).to be_a(Array)
+      expect(statement.transactions.size).to eq(36)
     end
 
     describe "balance" do
       let(:balance) { statement.balance }
 
       it "returns balance" do
-        balance.amount.should == BigDecimal('598.44')
+        expect(balance.amount).to eq(BigDecimal('598.44'))
       end
 
       it "returns balance in pennies" do
-        balance.amount_in_pennies.should == 59844
+        expect(balance.amount_in_pennies).to eq(59844)
       end
 
       it "returns balance date" do
-        balance.posted_at.should == Time.parse("2009-11-01 00:00:00 +0000")
+        expect(balance.posted_at).to eq(Time.parse("2009-11-01 00:00:00 +0000"))
       end
     end
 
@@ -50,22 +50,22 @@ describe OFX::Statement do
       let(:available_balance) { statement.available_balance }
 
       it "returns available balance" do
-        available_balance.amount.should == BigDecimal('1555.99')
+        expect(available_balance.amount).to eq(BigDecimal('1555.99'))
       end
 
       it "returns available balance in pennies" do
-        available_balance.amount_in_pennies.should == 155599
+        expect(available_balance.amount_in_pennies).to eq(155599)
       end
 
       it "returns available balance date" do
-        available_balance.posted_at.should == Time.parse("2009-11-01 00:00:00 +0000")
+        expect(available_balance.posted_at).to eq(Time.parse("2009-11-01 00:00:00 +0000"))
       end
 
       context "when AVAILBAL not found" do
         let(:ofx) { OFX::Parser::Base.new("spec/fixtures/utf8.ofx") }
 
         it "returns nil " do
-          available_balance.should be_nil
+          expect(available_balance).to be_nil
         end
       end
     end
@@ -75,40 +75,40 @@ describe OFX::Statement do
     let(:ofx) { OFX::Parser::Base.new("spec/fixtures/creditcard.ofx") }
 
     it "returns currency" do
-      statement.currency.should == "USD"
+      expect(statement.currency).to eq("USD")
     end
 
     it "returns start date" do
-      statement.start_date.should == Time.parse("2007-05-09 12:00:00 +0000")
+      expect(statement.start_date).to eq(Time.parse("2007-05-09 12:00:00 +0000"))
     end
 
     it "returns end date" do
-      statement.end_date.should == Time.parse("2007-06-08 12:00:00 +0000")
+      expect(statement.end_date).to eq(Time.parse("2007-06-08 12:00:00 +0000"))
     end
 
     it "returns account" do
-      statement.account.should be_a(OFX::Account)
-      statement.account.id.should == 'XXXXXXXXXXXX1111'
+      expect(statement.account).to be_a(OFX::Account)
+      expect(statement.account.id).to eq('XXXXXXXXXXXX1111')
     end
 
     it "returns transactions" do
-      statement.transactions.should be_a(Array)
-      statement.transactions.size.should == 3
+      expect(statement.transactions).to be_a(Array)
+      expect(statement.transactions.size).to eq(3)
     end
 
     describe "balance" do
       let(:balance) { statement.balance }
 
       it "returns balance" do
-        balance.amount.should == BigDecimal('-1111.01')
+        expect(balance.amount).to eq(BigDecimal('-1111.01'))
       end
 
       it "returns balance in pennies" do
-        balance.amount_in_pennies.should == -111101
+        expect(balance.amount_in_pennies).to eq(-111101)
       end
 
       it "returns balance date" do
-        balance.posted_at.should == Time.parse("2007-06-23 19:20:13 +0000")
+        expect(balance.posted_at).to eq(Time.parse("2007-06-23 19:20:13 +0000"))
       end
     end
 
@@ -116,15 +116,15 @@ describe OFX::Statement do
       let(:available_balance) { statement.available_balance }
 
       it "returns available balance" do
-        available_balance.amount.should == BigDecimal('19000.99')
+        expect(available_balance.amount).to eq(BigDecimal('19000.99'))
       end
 
       it "returns available balance in pennies" do
-        available_balance.amount_in_pennies.should == 1900099
+        expect(available_balance.amount_in_pennies).to eq(1900099)
       end
 
       it "returns available balance date" do
-        available_balance.posted_at.should == Time.parse("2007-06-23 19:20:13 +0000")
+        expect(available_balance.posted_at).to eq(Time.parse("2007-06-23 19:20:13 +0000"))
       end
     end
   end

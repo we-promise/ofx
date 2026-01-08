@@ -9,19 +9,19 @@ describe OFX::Status do
     let(:ofx_file) { "spec/fixtures/creditcard.ofx" }
 
     it "should return code" do
-      status.code.should == 0
+      expect(status.code).to eq(0)
     end
 
     it "should return severity" do
-      status.severity.should == :info
+      expect(status.severity).to eq(:info)
     end
 
     it "should return message" do
-      status.message.should == ""
+      expect(status.message).to eq("")
     end
 
     it "should be successful" do
-      status.success?.should == true
+      expect(status.success?).to be(true)
     end
   end
 
@@ -29,19 +29,19 @@ describe OFX::Status do
     let(:ofx_file) { "spec/fixtures/error.ofx" }
 
     it "should return code" do
-      status.code.should == 2000
+      expect(status.code).to eq(2000)
     end
 
     it "should return severity" do
-      status.severity.should == :error
+      expect(status.severity).to eq(:error)
     end
 
     it "should return message" do
-      status.message.should == "We were unable to process your request. Please try again later."
+      expect(status.message).to eq("We were unable to process your request. Please try again later.")
     end
 
     it "should not be successful" do
-      status.success?.should == false
+      expect(status.success?).to be(false)
     end
   end
 end
