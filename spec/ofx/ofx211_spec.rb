@@ -20,7 +20,7 @@ describe OFX::Parser::OFX211 do
     expect(@parser.account).to be_a(OFX::Account)
   end
 
-  it "should set account" do
+  it "should set sign_on" do
     expect(@parser.sign_on).to be_a(OFX::SignOn)
   end
 
