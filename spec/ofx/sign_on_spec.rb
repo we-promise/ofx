@@ -1,5 +1,3 @@
-require "spec_helper"
-
 describe OFX::SignOn do
   before do
     @ofx = OFX::Parser::Base.new("spec/fixtures/creditcard.ofx")
@@ -9,19 +7,19 @@ describe OFX::SignOn do
 
   describe "sign_on" do
     it "should return language" do
-      @sign_on.language.should == "ENG"
+      expect(@sign_on.language).to eq("ENG")
     end
 
     it "should return Financial Institution ID" do
-      @sign_on.fi_id.should == "24909"
+      expect(@sign_on.fi_id).to eq("24909")
     end
 
     it "should return Financial Institution Name" do
-      @sign_on.fi_name.should == "Citigroup"
+      expect(@sign_on.fi_name).to eq("Citigroup")
     end
 
     it "should return status" do
-      @sign_on.status.should be_a(OFX::Status)
+      expect(@sign_on.status).to be_a(OFX::Status)
     end
   end
 end
